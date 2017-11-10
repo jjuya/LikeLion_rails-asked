@@ -1,0 +1,86 @@
+<div class="container">
+    
+    <div class="form-group">
+        <h1>Question write</h1>
+    </div>
+    
+    <div class="form-group">
+        <form action="/question/show">
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="q_writter">작성자</label>
+                </div>
+                
+                <!--<div class="col-9">-->
+                <!--    <input type="text" class="form-control" name="q_writter">-->
+                <!--</div>-->
+                
+                <div class="col-3">
+                    <select class="custom-select" name="q_writter">
+                        <option value="private" <%= session[:user_email].nil? ? "select" : "" %>>익명</option>
+                        <option value="<%= session[:user_email] %>">공개</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="q_content">내용</label>
+                </div>
+                <div class="col-9">
+                    <textarea class="form-control" name='q_content' rows="3"></textarea>
+                </div>
+            </div>
+            
+            <div class="text-right">
+                <button type="submit" class="btn btn-outline-primary">글쓰기</button>
+            </div>
+        </form>
+    </div>
+    
+    <hr>
+    
+    <!-- 질문 리스트 -->
+    <div class="form-group">
+        <h1>Question list</h1>
+    </div>
+
+    <div class="form-group row">
+        <% @questions.reverse.each do |question| %>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><%= question.writter %></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= question.created_at %></h6>
+                        <p class="card-text"><%= question.content %></p>
+                        
+                        <div class="text-right">
+                            <a href="/question/destroy/<%= question.id %>" class="btn btn-outline-danger btn-sm text-right"> 삭제 </a>
+                        </div>
+                    </div>
+                </div> 
+                <div class="form-group"></div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<!--<form action="/question/show">-->
+<!--    <pre><select name="name_option" id="anonymous">-->
+<!--      <option value="public">실명</option>-->
+<!--      <option value="private">익명</option>-->
+<!--    </select></pre>-->
+<!--질문자 이름 : <input type="text" name="name" id="name"><br>-->
+<!--내용 : <input type="text" name="content"><br>-->
+<!--<input type="submit">-->
+<!--</form>-->
+
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        var anony = $('#anonymous');-->
+<!--        var content = $('#name');-->
+<!--        anony.on('change', function() {-->
+<!--            content.toggle();-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->

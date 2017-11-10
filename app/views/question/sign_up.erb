@@ -1,0 +1,39 @@
+<div class="container">
+    
+    <div class="form-group">
+        <h1>Sign-up</h1>
+    </div>
+    
+    <div class="form-group">
+        <form action="/question/sign_up_process">
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="q_title">이메일</label>
+                </div>
+                <div class="col-9">
+                    <input type="email" class="form-control" name="user_email" placeholder="example@example.com">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="q_writter">이름</label>
+                </div>
+                <div class="col-9">
+                    <input type="text" class="form-control" name="user_name">
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="q_writter">비밀번호</label>
+                </div>
+                <div class="col-9">
+                    <input type="password" class="form-control" name="user_password">
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-outline-primary">글쓰기</button>
+        </form>
+    </div>
+</div>
